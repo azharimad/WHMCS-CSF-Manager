@@ -29,13 +29,13 @@ class jcsf_firewall_manage extends jcsf_firewall_default
 		$sql = "SELECT *
 			FROM tblservers
 			" . (trim($instance->getConfig('servers', '')) ? "WHERE id IN (" . trim($instance->getConfig('servers', '')) . ")" : '');
-		$result = mysqli_query($sql);
+		$result = mysql_query($sql);
 		
-		while($server_details = mysqli_fetch_assoc($result))
+		while($server_details = mysql_fetch_assoc($result))
 		{
 			$servers[$server_details['id']] = array_merge($server_details, array('password' => decrypt($server_details['password'], $cc_encryption_hash)));
 		}
-		mysqli_free_result($result);
+		//mysql_free_result($result);
 		
 		$server_details = $servers[$server_id];
 		

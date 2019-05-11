@@ -8,7 +8,7 @@ add_hook("DailyCronJob", 1, function() {
 	$sql = "DELETE
 		FROM mod_csfmanager_allow
 		WHERE expiration <= '" . time() . "'";
-	mysqli_query($sql);
+	mysql_query($sql);
 
 });
 
